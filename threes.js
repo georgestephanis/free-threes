@@ -230,4 +230,58 @@
 		print_board(board, $board);
 	});
 
+    // Handle swipes!
+    (function (element) {
+        var start_x, start_y, start_time;
+
+        element.addEventListener('touchstart', function (event) {
+            start_x    = event.changedTouches[0].pageX;
+            start_y    = event.changedTouches[0].pageY;
+            start_time = new Date().getTime();
+
+            event.preventDefault();
+        });
+
+        element.addEventListener('touchmove', function (event) {
+            event.preventDefault();
+        });
+
+        element.addEventListener('touchend', function (event) {
+            var distance, distance_x, distance_y, distance_relevant, elapsed_time, swipe_direction, swipe_event;
+            distance_x   = event.changedTouches[0].pageX - start_x;
+            distance_y   = event.changedTouches[0].pageY - start_y;
+            distance     = Math.sqrt(Math.pow(distance_x, 2) + Math.pow(distance_y, 2));
+            elapsed_time = new Date().getTime() - start_time;
+
+            if (Math.abs(distance_x) > Math.abs(distance_y)) {
+                swipe_direction   = (distance_x < 0) ? 'left' : 'right';
+                distance_relevant = Math.abs(distance_x);
+            } else {
+                swipe_direction = (distance_y < 0) ? 'up' : 'down';
+                distance_relevant = Math.abs(distance_y);
+            }
+
+            swipe_event = new CustomEvent('threes_swipe', {
+                detail : {
+                    direction         : swipe_direction,
+                    distance          : distance,
+                    distance_x        : distance_x,
+                    distance_y        : distance_y,
+                    distance_relevant : distance_relevant,
+                    elapsed_time      : elapsed_time
+                }
+            });
+            element.dispatchEvent(swipe_event);
+
+            event.preventDefault();
+        });
+    }($board));
+
+    $board.addEventListener('threes_swipe', function (event) {
+        if (event.detail.distance_relevant > 30) {
+            board = advance_board(board, event.detail.direction);
+            print_board(board, $board);
+        }
+    });
+
 }(this, document, this.console));
