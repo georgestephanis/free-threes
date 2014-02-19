@@ -206,7 +206,7 @@
 		};
 	}
 
-	$board = document.getElementById('board');
+	$board  = document.getElementById('board');
 	board   = generate_new_board(4, 4);
 	next_up = generate_next_up();
 
