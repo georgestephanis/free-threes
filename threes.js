@@ -67,6 +67,26 @@
 		return Math.ceil(Math.random() * 3);
 	}
 
+    function generate_new_board(rows, columns) {
+        var board = [], row, column, cell;
+
+        for (row = 0; row < rows; row += 1) {
+			board.unshift([]);
+		}
+
+        for (row = 0; row < rows; row += 1) {
+			for (column = 0; column < columns; column += 1) {
+                cell = Math.ceil(Math.random() * 10);
+                if (cell >= 3) {
+                    cell = 0;
+                }
+				board[row][column] = cell;
+			}
+		}
+
+        return board;
+    }
+
 	function can_cells_merge(cell_1, cell_2) {
 		if (0 === cell_1 || 0 === cell_2) {
 			return cell_1 + cell_2;
@@ -187,12 +207,7 @@
 	}
 
 	$board = document.getElementById('board');
-	board = [
-		[ 0, 1, 0, 0 ],
-		[ 0, 0, 2, 0 ],
-		[ 0, 0, 1, 2 ],
-		[ 1, 2, 0, 0 ]
-	];
+	board   = generate_new_board(4, 4);
 	next_up = generate_next_up();
 
 	print_board(board, $board);
