@@ -1,4 +1,4 @@
-/*global document: false */
+/*global document, CustomEvent */
 
 /**
  * For simplicity's sake, all pushes are calculated
