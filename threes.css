@@ -5,10 +5,12 @@
     border: 2px solid #000;
     float: left;
 }
+
 .board .row {
     height: 50px;
     clear: left;
 }
+
 .board .row .cell {
     display: block;
     float: left;
@@ -17,6 +19,7 @@
     text-align: center;
     border: 1px solid #000;
 }
+
 .next-up {
     font: 40px 'Inconsolata', sans-serif;
     clear: left;
@@ -26,10 +29,12 @@
 .cell-contains-0 {
     color: transparent;
 }
+
 .cell-contains-1 {
     background: #222;
     color: #fff;
 }
+
 .cell-contains-2 {
     background: #2faadd;
     color: #fff;
