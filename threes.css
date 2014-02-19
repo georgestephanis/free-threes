@@ -30,11 +30,13 @@
     color: transparent;
 }
 
+.next-up-1,
 .cell-contains-1 {
     background: #222;
     color: #fff;
 }
 
+.next-up-2,
 .cell-contains-2 {
     background: #2faadd;
     color: #fff;
