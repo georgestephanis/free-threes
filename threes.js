@@ -8,7 +8,7 @@
 (function (window, document, console) {
 	'use strict';
 
-	var $board, board, next_up, has_changed;
+	var $board, board, size, next_up, has_changed;
 
 	function compare_rows(row_1, row_2) {
 		var column;
@@ -207,15 +207,32 @@
 	}
 
     function new_game() {
-        board   = generate_new_board(4, 4);
+        board   = generate_new_board(size, size);
         next_up = generate_next_up();
         print_board(board, $board);
     }
 
 	$board = document.getElementById('board');
+    size   = 5;
 	new_game();
 
     document.getElementById('reset').addEventListener('click', new_game);
+
+    document.getElementById('bigger_board').addEventListener('click', function () {
+        size += 1;
+        if (size > 10) {
+            size = 10;
+        }
+        new_game();
+    });
+
+    document.getElementById('smaller_board').addEventListener('click', function () {
+        size -= 1;
+        if (size < 3) {
+            size = 3;
+        }
+        new_game();
+    });
 
 	window.addEventListener('keydown', function (event) {
 		switch (event.which) {

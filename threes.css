@@ -38,7 +38,7 @@ body {
     border: 2px solid #000
 }
 
-#reset {
+.buttons button {
     font-family: 'Inconsolata', sans-serif;
     padding: 10px 20px;
     font-size: 20px;
