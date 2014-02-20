@@ -206,11 +206,16 @@
 		};
 	}
 
-	$board  = document.getElementById('board');
-	board   = generate_new_board(4, 4);
-	next_up = generate_next_up();
+    function new_game() {
+        board   = generate_new_board(4, 4);
+        next_up = generate_next_up();
+        print_board(board, $board);
+    }
 
-	print_board(board, $board);
+	$board = document.getElementById('board');
+	new_game();
+
+    document.getElementById('reset').addEventListener('click', new_game);
 
 	window.addEventListener('keydown', function (event) {
 		switch (event.which) {

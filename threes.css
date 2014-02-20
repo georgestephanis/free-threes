@@ -38,6 +38,16 @@ body {
     border: 2px solid #000
 }
 
+#reset {
+    font-family: 'Inconsolata', sans-serif;
+    padding: 10px 20px;
+    font-size: 20px;
+    background: #2faadd;
+    color: #fff;
+    border: 2px solid #222;
+    outline: 0;
+}
+
 /* Cell Colors: */
 .cell-contains-0 {
     color: transparent;
